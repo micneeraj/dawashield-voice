@@ -11,9 +11,9 @@ name: Daily CDSCO data refresh + push re-check
 #      plus expiry reminders ~5 days before expiry
 # Steps 4-5 need the repository secret FIREBASE_SERVICE_ACCOUNT (service account JSON).
 
+# Scheduled runs are disabled in this repo. Only the Google submission repo
+# (micneeraj/dawashield) refreshes data and deploys the live site.
 on:
-  schedule:
-    - cron: "30 1 * * *" # every day 07:00 IST
   workflow_dispatch:
 
 permissions:

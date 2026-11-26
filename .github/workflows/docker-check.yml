@@ -1,0 +1,53 @@
+﻿name: docker-check
+
+# Proves the one-command start: no .env, no secrets.
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docker-compose-up:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirm no .env file is present
+        run: test ! -f .env && echo "no .env, as expected"
+
+      - name: docker compose up -d --build
+        run: docker compose up -d --build
+
+      - name: Wait up to 3 minutes for http://localhost:3000
+        run: |
+          for i in $(seq 1 36); do
+            if curl -fsS http://localhost:3000/ -o /tmp/index.html; then echo "up after ~$((i*5))s"; exit 0; fi
+            sleep 5
+          done
+          echo "not reachable after 3 minutes"; docker compose ps; docker compose logs; exit 1
+
+      - name: HTML contains the app shell
+        run: |
+          grep -q '<div id="root"' /tmp/index.html
+          grep -q '<title>DawaShield' /tmp/index.html
+          echo "app shell present"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Install Chromium for the main-screen check
+        run: npx playwright install --with-deps chromium
+
+      - name: Main screen, demo RED, language switch, cabinet save
+        run: node scripts/smoke-docker.mjs
+
+      - name: Stop the stack
+        if: always()
+        run: docker compose down

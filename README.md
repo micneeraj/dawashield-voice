@@ -10,6 +10,12 @@ Then open **http://localhost:3000**. No API keys are needed for the core flow: t
 
 Round 2 pitch deck: [docs/DawaShield_Pitch_Deck.pdf](docs/DawaShield_Pitch_Deck.pdf)
 
+Optional live site (the hosted version, not needed to run this repo): https://dawashield-hybrid-3023.web.app
+
+Built by Neeraj Kumar for the Scaler x Wispr Flow "India Runs on Voice" hackathon, Round 2. All build prompts were dictated with Wispr Flow.
+
+This repository has the full git history from 15 Nov 2026, the start of the hackathon.
+
 **A medicine companion for every Indian home.** Speak in Hindi or English (offline), or Punjabi, Gujarati, Marathi, Kannada or Tamil (online), type, or show a photo of a medicine strip, and DawaShield checks your family's medicines against official **CDSCO** drug-quality alerts (NSQ = Not of Standard Quality, and spurious). The check **works without internet, on cheap Android phones**.
 
 > Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.
