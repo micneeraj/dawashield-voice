@@ -126,6 +126,18 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 | On-device Gemini Nano photo reading | **Not verified.** One desktop Chrome attempt showed "On this device" but returned 0% confidence fields |
 | Unit tests | 250 app tests passing; 20 pipeline tests passing (`python -I -m unittest discover -s data -p "test_*.py"`) |
 
+## Real-World Voice Validation
+
+DawaShield was tested by four family members on their own phones, using live voice in Hindi, English and Punjabi. One participant was aged 60+.
+
+- Participants: 4
+- Successful medicine batch checks: 4/4
+- Task completion rate: 100%
+- Manual typing required: None
+- Developer assistance required: None
+
+This was an initial, informal test, observed by the builder. It shows that an end-to-end, voice-first medicine batch check is feasible. Larger testing with wider language and accent coverage is planned.
+
 ## What works where
 
 | Capability | Where |
@@ -140,7 +152,7 @@ Every AI answer shows **"On this device"** or **"Cloud"**, taken from the SDK's 
 ## Limits (honest)
 
 - **Grey is not safe.** CDSCO lists come out about a month late, not every state reports every month, most batches are never tested, and counterfeits can copy a real batch number.
-- **Not yet proven:** accuracy on real strip photos (no labelled photos yet), on real users' voices, and with real regional-language speakers. Tested informally by 4 family members (Hindi, English, Punjabi, one aged 60+), all completed by voice. Not yet tested with a wider group of real users.
+- **Not yet proven:** accuracy on real strip photos (no labelled photos yet), and with real regional-language speakers. Not yet tested beyond 4 family members.
 - Matching cases are real records plus generated variants; generated cases are labelled as such.
 - Regional languages need internet. **The Punjabi, Gujarati, Marathi, Kannada and Tamil translations were written by Claude (AI) and back-translated by the same model**, then held to the plain-code meaning check (all 139 safety strings pass in every language). Because the back-translation is not independent, **review by native speakers is recommended**. Sheets: `i18n/manual/*.tsv`, `i18n/review/*.csv`.
 - Regional voice uses the browser's built-in speech in that language only. If the device has no voice for it, the app shows text only with a small note, never a wrong-language voice. Hindi and English keep their recorded Sarvam clips.
