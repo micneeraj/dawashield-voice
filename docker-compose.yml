@@ -1,4 +1,4 @@
-﻿# One command: docker compose up
+# One command: docker compose up
 # Then open http://localhost:3000. No API keys are needed for the core check.
 services:
   app:

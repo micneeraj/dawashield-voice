@@ -1,4 +1,4 @@
-﻿name: docker-check
+name: docker-check
 
 # Proves the one-command start: no .env, no secrets.
 on:

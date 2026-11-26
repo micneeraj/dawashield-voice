@@ -1,4 +1,4 @@
-﻿# DawaShield: build the PWA in one stage, then serve only the built files from a small nginx image.
+# DawaShield: build the PWA in one stage, then serve only the built files from a small nginx image.
 # No API keys are needed. Optional public build values come from docker-compose (empty = not set).
 
 FROM node:24-alpine AS build

@@ -1,4 +1,4 @@
-﻿// Smoke test for the container at http://localhost:3000. No keys, no .env.
+// Smoke test for the container at http://localhost:3000. No keys, no .env.
 // Checks the main screen, the 251TTF014 demo (RED with its CDSCO source line),
 // the language switch, and saving to the cabinet.
 import { chromium } from "playwright";
