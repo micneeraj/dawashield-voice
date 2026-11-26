@@ -20,13 +20,11 @@ This repository has the full git history from 15 Nov 2026, the start of the hack
 
 > Your mother's medicine cabinet shouldn't need an internet connection, English literacy or a technical understanding of batch numbers to stay informed about medicine safety.
 
-Entry for Google's **#BuildHybridAI 2026** hackathon. Live: **https://dawashield-hybrid-3023.web.app**
+Entry for Scaler x Wispr Flow "India Runs on Voice", Round 2.
 
 ## Demo video
 
 **Watch the demo:** https://youtu.be/Ajm1V1TYdz4 — a short walkthrough of the voice, photo and typed checks against the official CDSCO list.
-
-Built by Neeraj Kumar.
 
 ---
 
