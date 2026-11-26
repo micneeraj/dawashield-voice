@@ -47,8 +47,8 @@ CDSCO, India's drug regulator, and the state drug labs publish lists of medicine
 | 7 | **Family alerts** | WhatsApp message, or optional push to a family member's phone after they accept an invite link |
 | 8 | **Report it** | Pre-filled CDSCO complaint (email, toll-free) and PvPI; "Report a wrong result" (no personal data) |
 | 9 | **Try a demo** | Real RED batches 251TTF014, P03524, 054A003 from the official list |
-| 10 | **Hindi + English everywhere** | Pre-written templates for every result type, pre-recorded Sarvam AI voice clips; works offline |
-| 11 | **5 regional languages (online)** | Punjabi, Gujarati, Marathi, Kannada, Tamil: build-time Sarvam translation with back-translation review; native-script picker with a "Needs internet" badge; offline falls back to Hindi |
+| 10 | **Hindi + English everywhere** | Pre-written templates for every result type, pre-recorded Hindi and English voice clips (Sarvam AI Bulbul); works offline |
+| 11 | **5 regional languages (online)** | Punjabi, Gujarati, Marathi, Kannada, Tamil: build-time translations (Punjabi partly from the Sarvam AI cache; the rest written with Claude, AI, and back-translated); native-script picker with a "Needs internet" badge; offline falls back to Hindi |
 | 12 | **Transparency page** | Records, latest alert month, last refresh, hand-verified count, tests passed, false-RED / false-GREY, confusion table, known limits |
 
 ## Safety rules (non-negotiable)
@@ -154,8 +154,8 @@ This was an initial, informal test, observed by the builder. It shows that an en
 - **Grey is not safe.** CDSCO lists come out about a month late, not every state reports every month, most batches are never tested, and counterfeits can copy a real batch number.
 - **Not yet proven:** accuracy on real strip photos (no labelled photos yet), and with real regional-language speakers. Not yet tested beyond 4 family members.
 - Matching cases are real records plus generated variants; generated cases are labelled as such.
-- Regional languages need internet. **The Punjabi, Gujarati, Marathi, Kannada and Tamil translations were written by Claude (AI) and back-translated by the same model**, then held to the plain-code meaning check (all 139 safety strings pass in every language). Because the back-translation is not independent, **review by native speakers is recommended**. Sheets: `i18n/manual/*.tsv`, `i18n/review/*.csv`.
-- Regional voice uses the browser's built-in speech in that language only. If the device has no voice for it, the app shows text only with a small note, never a wrong-language voice. Hindi and English keep their recorded Sarvam clips.
+- Regional languages need internet. **Most Punjabi, Gujarati, Marathi, Kannada and Tamil translations were written by Claude (AI) and back-translated by the same model** (Punjabi keeps its partial Sarvam AI cache), and 11 non-safety UI strings per language were machine-translated by Gemini Flash-Lite and are not yet human-reviewed, then held to the plain-code meaning check (all 139 safety strings pass in every language). Because the back-translation is not independent, **review by native speakers is recommended**. Sheets: `i18n/manual/*.tsv`, `i18n/review/*.csv`.
+- Voices: Hindi and English use recorded Sarvam AI clips. Punjabi and Kannada use recorded Gemini TTS clips for some messages (the rest use the browser voice). Gujarati, Marathi and Tamil use the browser's built-in speech. If the device has no voice for a language, the app shows text only with a small note, never a wrong-language voice.
 - Gemini Nano only runs on supported desktop Chrome; on phones, photo reading needs the internet. Offline voice input needs the browser's Hindi speech pack. **The match itself always works offline.**
 - Push needs a browser that supports web push; on iPhone only when installed to the home screen. The calendar file is the fallback.
 - New data reaches the live site daily only when the `FIREBASE_SERVICE_ACCOUNT` secret is set in GitHub.
@@ -182,6 +182,6 @@ Firebase project `dawashield-hybrid-3023` (free Spark plan): Hosting, Firestore,
 
 ## Credits
 
-Built by Neeraj Kumar. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices and regional translations: Sarvam AI. MIT licence.
+Built by Neeraj Kumar. Data: Central Drugs Standard Control Organisation (CDSCO), Government of India. Voices: Sarvam AI (Hindi and English clips) and Gemini TTS (some Punjabi and Kannada clips). Translations: Sarvam AI (Punjabi cache), Claude (AI) for most regional strings, and Gemini Flash-Lite for 11 non-safety strings per language. MIT licence.
 
 *DawaShield does not replace a pharmacist, doctor or official advice.*

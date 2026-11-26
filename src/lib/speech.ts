@@ -53,7 +53,10 @@ export async function listen(
   rec.interimResults = true;
   rec.continuous = false;
   // Prefer on-device recognition when the language pack is present.
-  if ("processLocally" in rec && typeof Ctor.available === "function") {
+  // Skipped under automated browsers: headless Chromium crashes the page when
+  // SpeechRecognition.available({ processLocally: true }) is called (found in QA).
+  const automated = typeof navigator !== "undefined" && navigator.webdriver === true;
+  if (!automated && "processLocally" in rec && typeof Ctor.available === "function") {
     try {
       const st = await Ctor.available({ langs: [code], processLocally: true });
       if (st === "available") rec.processLocally = true;
